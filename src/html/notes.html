@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+  <title>Collaborative Retros</title>
+  <script type="text/javascript" src="../js/angular.min.js"></script>
+  <script type="text/javascript" src="../js/jquery-1.11.0.min.js"></script>
+  <script type="text/javascript" src="../js/firebase.js"></script>
+  <script type="text/javascript" src="../js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="../js/angularfire.min.js"></script>
+  <script type="text/javascript" src="../js/firebase-simple-login.js"></script>
+
+  <script type="text/javascript" src="../js/angular/main.js"></script>
+  <script type="text/javascript" src="../js/angular/controllers/authentication.js"></script>
+  <script type="text/javascript" src="../js/angular/services/authentication.js"></script>
+
+  <link type="text/css" rel="stylesheet" media="all" href="../css/bootstrap.min.css">
+  <link type="text/css" rel="stylesheet" media="all" href="../css/bootstrap-theme.min.css">
+</head>
+<body>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <div ng-controller="AuthenticationCtrl">
+      <button type="submit" ng-click="login()" ng-hide="authenticated">Login using Google</button>
+      <span ng-show="authenticated">Hello {{user.name}}</span>
+    </div>
+
+    <div class="container">
+      <div class="navbar-header">
+        <button data-target=".bs-navbar-collapse" data-toggle="collapse" type="button" class="navbar-toggle">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="<%= home_index_path =%>">Home</a>
+      </div>
+      <nav role="navigation" class="collapse navbar-collapse bs-navbar-collapse">
+        <ul class="nav navbar-nav">
+          <li>
+            <a href="<%= home_settings_path =%>">Settings</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+  <div class="panel-body">
+    Content
+  </div>
+</div>
+
+</body>
+</html>
