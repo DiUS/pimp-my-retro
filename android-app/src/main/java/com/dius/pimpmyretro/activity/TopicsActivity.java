@@ -9,7 +9,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.dius.pimpmyretro.R;
+import com.dius.pimpmyretro.data.PimpEventBus;
 import com.dius.pimpmyretro.data.TopicCategory;
+import com.dius.pimpmyretro.dialog.NewTopicDialog;
 import com.dius.pimpmyretro.fragment.TopicListFragment;
 import com.dius.pimpmyretro.util.Constants;
 
@@ -18,6 +20,7 @@ public class TopicsActivity extends FragmentActivity implements Constants{
 	private TopicListFragment mFragmentHappy;
 	private TopicListFragment mFragmentUnHappy;
 	private TopicListFragment mFragmentNoIdea;
+	private NewTopicDialog mNewTopicDialog;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +52,8 @@ public class TopicsActivity extends FragmentActivity implements Constants{
 		if (id == R.id.action_add) {
 			
 			// Diplay 
-			
+			mNewTopicDialog = new NewTopicDialog(this);
+			mNewTopicDialog.show();
 			return true;
 		}
 		return super.onOptionsItemSelected(item);

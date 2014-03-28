@@ -56,6 +56,11 @@ public class TopicAdapter extends BaseAdapter {
 	public Topic getItem(int position) {
 		return mTopics.get(position);
 	}
+	
+	public void addTopic(Topic topic){
+		mTopics.add(topic);
+		notifyDataSetChanged();
+	}
 
 	@Override
 	public long getItemId(int position) {

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_dialog_new_topic"
+    android:paddingBottom="10dp"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <!-- Buttons -->
+
+        <LinearLayout
+            android:id="@+id/layoutActions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="3" >
+
+            <ImageButton
+                android:id="@+id/imageViewHappy"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:scaleType="fitCenter"
+                android:src="@drawable/happy" />
+
+            <ImageButton
+                android:id="@+id/imageViewUnHappy"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:scaleType="fitCenter"
+                android:src="@drawable/unhappy" />
+
+            <ImageButton
+                android:id="@+id/imageViewNoIdea"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:scaleType="fitCenter"
+                android:src="@drawable/noidead" />
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/editTextUserName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Username"
+            android:layout_below="@+id/layoutActions"/>
+        
+        <EditText
+            android:id="@+id/editTextContent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/actionAdd"
+            android:layout_below="@+id/editTextUserName"
+            android:gravity="top"
+            android:hint="Topic Content"
+            android:lines="10" />
+
+        <Button
+            android:id="@+id/actionAdd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:text="Add" />
+
+        <Button
+            android:id="@+id/actionCancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/actionAdd"
+            android:layout_below="@+id/editTextContent"
+            android:layout_toLeftOf="@+id/actionAdd"
+            android:text="Cancel" />
+    </RelativeLayout>
+
+</LinearLayout>

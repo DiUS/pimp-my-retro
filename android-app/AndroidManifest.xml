@@ -12,7 +12,8 @@
 
     <application
         android:allowBackup="false"
-        android:icon="@drawable/ic_launcher" >
+        android:icon="@drawable/ic_launcher"
+        android:background="@color/app_background_color"  >
         <activity
             android:name="com.dius.pimpmyretro.activity.LoginActivity"
             android:label="@string/title_activity_login" >

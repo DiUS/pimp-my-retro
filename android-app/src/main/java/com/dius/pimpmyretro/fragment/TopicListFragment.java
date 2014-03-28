@@ -2,8 +2,12 @@ package com.dius.pimpmyretro.fragment;
 
 import com.dius.pimpmyretro.R;
 import com.dius.pimpmyretro.adapter.TopicAdapter;
+import com.dius.pimpmyretro.data.NewTopicEvent;
+import com.dius.pimpmyretro.data.PimpEventBus;
+import com.dius.pimpmyretro.data.Topic;
 import com.dius.pimpmyretro.data.TopicCategory;
 import com.dius.pimpmyretro.util.Constants;
+import com.squareup.otto.Subscribe;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -29,6 +33,7 @@ public class TopicListFragment extends Fragment implements Constants{
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		PimpEventBus.register(this);
 		Bundle bundle = this.getArguments();
 		if (getArguments() != null) {
 			mCategory = TopicCategory.valueOf(bundle.getString(BUNDLE_CATEGORY));
@@ -48,6 +53,13 @@ public class TopicListFragment extends Fragment implements Constants{
 			mCategoryImage.setImageResource(mCategory.getImageId());
 		}
 		return view;
+	}
+	
+	@Subscribe
+	public void newTopic(NewTopicEvent event){
+		if (mCategory.equals(event.getCategory())){
+			mTopicAdapter.addTopic(new Topic(event.getContent(), event.getCategory(), event.getUsername()));
+		}
 	}
 	
 }
