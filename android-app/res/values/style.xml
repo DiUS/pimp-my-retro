@@ -1,0 +1,8 @@
+<resources>
+
+    <style name="PimpTextStule" parent="android:Widget.Holo.Light.TextView">
+        <item name="android:textSize">26sp</item>
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+
+</resources>

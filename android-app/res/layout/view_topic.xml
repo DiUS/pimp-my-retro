@@ -2,14 +2,14 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bg_rounded_topic"
     android:orientation="vertical"
-    android:padding="5dp"
-    android:background="@drawable/bg_rounded_topic" >
+    android:padding="5dp" >
 
     <TextView
         android:id="@+id/textViewTopicContent"
+        style="@style/PimpTextStule"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:layout_height="match_parent" />
 
 </LinearLayout>

@@ -8,10 +8,13 @@ public class NewTopicEvent {
 	
 	private String mUsername;
 	
-	public NewTopicEvent(String content, TopicCategory category, String username) {
+	private String mId;
+	
+	public NewTopicEvent(String id, String content, TopicCategory category, String username) {
 		this.mContent = content;
 		this.mCategory = category;
 		this.mUsername = username;
+		this.mId = id;
 	}
 
 	public TopicCategory getCategory() {
@@ -28,6 +31,10 @@ public class NewTopicEvent {
 
 	public void setContent(String mContent) {
 		this.mContent = mContent;
+	}
+
+	public String getId() {
+		return mId;
 	}
 
 }

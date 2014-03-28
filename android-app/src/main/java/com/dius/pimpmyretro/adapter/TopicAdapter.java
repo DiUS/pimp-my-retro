@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.dius.pimpmyretro.R;
 import com.dius.pimpmyretro.data.Topic;
+import com.dius.pimpmyretro.dialog.DisplayTopicDialog;
 
 public class TopicAdapter extends BaseAdapter {
 
@@ -21,32 +22,16 @@ public class TopicAdapter extends BaseAdapter {
 	private List<Topic> mTopics;
 
 	private LayoutInflater mInflater;
+	
+	private DisplayTopicDialog mDisplayDialog;
 
 	public TopicAdapter(Context context) {
 		this.mContext = context;
 		mTopics = new ArrayList<Topic>();
 		mInflater = (LayoutInflater) mContext
 				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-		//TODO : REMOVE
-		testTopics();
 	}
 
-	/**
-	 * TODO : REMOVE
-	 */
-	private void testTopics(){
-		Random ramdom = new Random();
-		for (int i = 0; i <15;i++){
-			Topic topicRandom = new Topic();
-			StringBuilder text = new StringBuilder();
-			for (int j = 0; j <ramdom.nextInt(50);j++){
-				text.append(ramdom.nextInt(50));
-			}
-			topicRandom.setTopicContent(text.toString());
-			mTopics.add(topicRandom);
-		}
-	}
-	
 	@Override
 	public int getCount() {
 		return mTopics.size();
@@ -78,9 +63,24 @@ public class TopicAdapter extends BaseAdapter {
 			rowView.setTag(viewHolder);
 		}
 
+		final Topic topic = mTopics.get(position);
+		rowView.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				if (mDisplayDialog != null && mDisplayDialog.isShowing()){
+					mDisplayDialog.hide();
+				}else{
+					mDisplayDialog = new DisplayTopicDialog(mContext);
+				}
+				mDisplayDialog.setTopic(topic);
+				mDisplayDialog.show();
+				
+			}
+		});
+		
 		// fill data
 		TopicViewHolder holder = (TopicViewHolder) rowView.getTag();
-		Topic topic = mTopics.get(position);
 		holder.content.setText(topic.getTopicContent());
 		return rowView;
 	}

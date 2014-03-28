@@ -1,34 +1,57 @@
 package com.dius.pimpmyretro.dialog;
 
+import android.annotation.TargetApi;
 import android.app.Dialog;
 import android.content.Context;
+import android.graphics.LightingColorFilter;
+import android.graphics.PorterDuff.Mode;
 import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.text.TextUtils;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.dius.pimpmyretro.R;
 import com.dius.pimpmyretro.data.NewTopicEvent;
 import com.dius.pimpmyretro.data.PimpEventBus;
 import com.dius.pimpmyretro.data.TopicCategory;
+import com.dius.pimpmyretro.util.Constants;
 
-public class NewTopicDialog extends Dialog {
+public class NewTopicDialog extends Dialog implements Constants {
 
 	private TopicCategory mCategory;
 	
+	private Drawable mBackground;
+	
+	private ViewGroup mDialogContent;
+	
 	public NewTopicDialog(Context context) {
 		this(context, R.layout.dialog_new_topic);
+		this.mBackground = context.getResources().getDrawable(R.drawable.bg_dialog);
+		this.mBackground = this.mBackground.mutate();
 	}
 
-	protected NewTopicDialog(Context context, boolean cancelable,
-			OnCancelListener cancelListener) {
-		super(context, cancelable, cancelListener);
+	private void updateColor(){
+		if (mCategory!= null){
+			int colorIdx = mCategory.getBackgroundColor();
+			colorIdx = getContext().getResources().getColor(colorIdx);
+			this.mBackground.setColorFilter(colorIdx, Mode.MULTIPLY);
+		}
+		setBackground(mDialogContent, this.mBackground);	
 	}
-
+	
+	@Override
+	public void show() {
+		updateColor();
+		super.show();
+	}
+	
 	public NewTopicDialog(Context context, int layoutId) {
 		super(context);
 		setCancelable(false);
@@ -39,30 +62,31 @@ public class NewTopicDialog extends Dialog {
 
 		final EditText editTextContent = (EditText) findViewById(R.id.editTextContent);
 		final EditText editTextUsername = (EditText) findViewById(R.id.editTextUserName);
-		ImageButton buttonHappy = (ImageButton) findViewById(R.id.imageViewHappy);
+		ImageView buttonHappy = (ImageView) findViewById(R.id.imageViewHappy);
+		mDialogContent = (ViewGroup)findViewById(R.id.dialogContent);
 		buttonHappy.setOnClickListener(new View.OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
-				mCategory = TopicCategory.HAPPY;
+				setCategory(TopicCategory.HAPPY);
 			}
 		});
 		
-		ImageButton buttonUnHappy = (ImageButton) findViewById(R.id.imageViewUnHappy);
+		ImageView buttonUnHappy = (ImageView) findViewById(R.id.imageViewUnHappy);
 		buttonUnHappy.setOnClickListener(new View.OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
-				mCategory = TopicCategory.UNHAPPY;
+				setCategory(TopicCategory.UNHAPPY);
 			}
 		});
 		
-		ImageButton buttonNoIdea = (ImageButton) findViewById(R.id.imageViewNoIdea);
+		ImageView buttonNoIdea = (ImageView) findViewById(R.id.imageViewNoIdea);
 		buttonNoIdea.setOnClickListener(new View.OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
-				mCategory = TopicCategory.NO_IDEA;
+				setCategory(TopicCategory.NO_IDEA);
 			}
 		});
 		
@@ -84,7 +108,7 @@ public class NewTopicDialog extends Dialog {
 						Toast.makeText(getContext(), "Fill the content", Toast.LENGTH_LONG).show();
 					}else{
 						// save to firebase
-						PimpEventBus.post(new NewTopicEvent(textContent, mCategory, userNameContent));
+						PimpEventBus.post(new NewTopicEvent(null, textContent, mCategory, userNameContent));
 						hide();
 					}
 				}
@@ -100,6 +124,21 @@ public class NewTopicDialog extends Dialog {
 				hide();
 			}
 		});
+	}
+	
+	private void setCategory(TopicCategory category){
+		this.mCategory = category;
+		updateColor();
+	}
+	
+	@TargetApi(Build.VERSION_CODES.JELLY_BEAN)
+	@SuppressWarnings("deprecation")
+	public static void setBackground(View view, Drawable drawable) {
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+			view.setBackground(drawable);
+		} else {
+			view.setBackgroundDrawable(drawable);
+		}
 	}
 
 }

@@ -2,8 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_dialog_new_topic"
-    android:paddingBottom="10dp"
+    android:id="@+id/dialogContent"
+    android:padding="10dp"
     android:orientation="vertical" >
 
     <RelativeLayout
@@ -18,7 +18,8 @@
             android:layout_height="wrap_content"
             android:weightSum="3" >
 
-            <ImageButton
+            <ImageView
+                android:background="@color/topic_happy_background_color"
                 android:id="@+id/imageViewHappy"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
@@ -26,21 +27,23 @@
                 android:scaleType="fitCenter"
                 android:src="@drawable/happy" />
 
-            <ImageButton
+            <ImageView
+                android:background="@color/topic_sad_background_color"
                 android:id="@+id/imageViewUnHappy"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_weight="1"
                 android:scaleType="fitCenter"
-                android:src="@drawable/unhappy" />
+                android:src="@drawable/sad" />
 
-            <ImageButton
+            <ImageView
+                android:background="@color/topic_confused_background_color"
                 android:id="@+id/imageViewNoIdea"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_weight="1"
                 android:scaleType="fitCenter"
-                android:src="@drawable/noidead" />
+                android:src="@drawable/confused" />
         </LinearLayout>
 
         <EditText
@@ -51,13 +54,13 @@
             android:layout_below="@+id/layoutActions"/>
         
         <EditText
+            android:hint="Topic Content"
             android:id="@+id/editTextContent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_above="@+id/actionAdd"
             android:layout_below="@+id/editTextUserName"
             android:gravity="top"
-            android:hint="Topic Content"
             android:lines="10" />
 
         <Button
