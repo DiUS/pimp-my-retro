@@ -24,4 +24,16 @@ var controller = app.controller('DashboardCtrl', ['$scope', 'CategoryService', '
       }
       return Object.keys(topic.votes).length;
     }
+
+    $('#fire').fire({
+        mode:'anim',
+        speed:30,
+        minPow:1,
+        maxPow:10,
+        gravity:9,
+        flameWidth:4,
+        flameHeight:3,
+        maxPowZone: 'sides',
+        fadingFlameSpeed: 18
+    });
 }]);
