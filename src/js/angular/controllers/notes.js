@@ -22,12 +22,12 @@ app.controller('NotesCtrl', ['$scope', '$rootScope', 'TopicService', 'CategorySe
     $scope.topic = {};
   };
   
-  $scope.vote = function(topic) {
-    TopicService.vote(topic, $rootScope.user.given_name);
-  };
-
-  $scope.unvote = function(topic) {
-    TopicService.unvote(topic, $rootScope.user.given_name);
+  $scope.toggleVote = function(topic) {
+    if($scope.hasVote(topic)) {
+      TopicService.unvote(topic, $rootScope.user.given_name);
+    } else {
+      TopicService.vote(topic, $rootScope.user.given_name);
+    }
   };
 
   $scope.hasVote = function(topic) {

@@ -26,9 +26,11 @@ app.service('TopicService', ['$rootScope', '$firebase', function($rootScope, $fi
         var voter = childSnapshot.val();
         if(voter == $rootScope.user.given_name) {
           childSnapshot.ref().remove();
+          return true;
         }
       });
     });
+    votesRef.off('value');
   };
 
 }]);
