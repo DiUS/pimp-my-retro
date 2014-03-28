@@ -9,13 +9,13 @@
 
 .panel {
 	border: 0 none!important;
+	padding: 0;
 }
 
 .panel-heading {
-	width: 90%;
+	width: 100%;
 	text-align: center;
-	margin: 0 auto;
-	border-radius: 15px;
+	
 }
 
 .category {
@@ -47,16 +47,16 @@
 	padding: 10px;
 }
 
-.category.good .topic {
-    background-color: #B3E4B9;
+.good {
+    background-color: #B3E4B9 !important;
 }
 
-.category.bad .topic{
-    background-color: #E4B6B3;
+.bad{
+    background-color: #E4B6B3!important;
 }
 
-.category.confused .topic{
-    background-color: #E4D0B3;
+.confused{
+    background-color: #E4D0B3!important;
 }
 
 div.topic-item {

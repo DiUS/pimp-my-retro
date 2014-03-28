@@ -47,20 +47,20 @@
   </div>
 </nav>
 
-<div class="panel panel-default" ng-controller="DashboardCtrl">
+<div class="container-fluid panel panel-default" ng-controller="DashboardCtrl">
     <div class="panel-heading">
         <h1>{{ title }}</h1>
     </div>
 
-    <div class="panel-body container">
+    <div class="panel-body">
         <div class="dashboard row">
 
-            <div class="category col-md-4 {{ cat.class }}" ng-repeat="cat in categories">
+            <div class="category col-md-4" ng-repeat="cat in categories">
             	<div class="cat-header">
-                	<img src="{{ cat.icon }}" />
+                	<img src="{{cat.icon}}" />
                 	<h2>{{ cat.title }}</h2>
                 </div>
-                <div class="topic" ng-repeat="topic in topics | orderByPriority | topicCategory:cat">
+                <div class="topic" ng-class="cat.class" ng-repeat="topic in topics | orderByPriority | topicCategory:cat">
                     {{ topic.text }}
                     <button ng-click="remove(topic)" class="btn btn-danger btn-sm">X</button>
                 </div>
