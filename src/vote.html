@@ -1,0 +1,21 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <span>Add retro topic</span>
+  </div>
+
+  <div class="panel-body" ng-controller="NotesCtrl" ng-show="authenticated">
+    <div class="btn-group">
+      <button type="button" class="btn btn-default" ng-repeat="category in categories | orderByPriority" ng-click="selectCategory(category)">{{category.title}}</button>
+    </div>
+
+    <div class="container-fluid">
+      <div class="row" ng-repeat="category in categories | orderByPriority" ng-show="category == selectedCategory">
+        <div class="col-md-4 topic-item" ng-repeat="topic in topics | orderByPriority | topicCategory:category">
+          <span>{{topic.text}}</span>
+          <button type="button" class="btn-sm btn-primary glyphicon glyphicon-heart pull-right" ng-click="unvote(topic)" ng-show="hasVote(topic)"></button>
+          <button type="button" class="btn-sm btn-default glyphicon glyphicon-heart pull-right" ng-click="vote(topic)" ng-hide="hasVote(topic)"></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

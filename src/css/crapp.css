@@ -1,11 +1,65 @@
-div.good {
-    background-color: green;
+.dashboard {
+	text-align: center;
 }
 
-div.bad {
-    background-color: red;
+.dashboard .col-md-4 {
+	padding-left: 0px;
+	padding-right: 0px;
 }
 
-div.confused {
-    background-color: yellow;
+.panel {
+	border: 0 none!important;
+	padding: 0;
+}
+
+.panel-heading {
+	width: 100%;
+	text-align: center;
+	
+}
+
+.category {
+	text-align: center;
+}
+
+.cat-header {
+	width: 90%;
+	margin: 10px 10px;
+	padding: 10px 0;
+	background-color: #f5f5f5;
+	border-bottom: 2px solid #999;
+	border-left: 2px solid #999;
+	display: inline-block;
+	border-radius: 15px;
+}
+
+.cat-header img, .cat-header h2 {
+	display: inline;
+	vertical-align: middle;
+}
+
+.topic {
+	border: 1px solid #999;
+	border-radius: 5px;
+	background: #f5f5f5;
+	width: 70%;
+	margin: 20px auto;
+	padding: 10px;
+}
+
+.good {
+    background-color: #B3E4B9 !important;
+}
+
+.bad{
+    background-color: #E4B6B3!important;
+}
+
+.confused{
+    background-color: #E4D0B3!important;
+}
+
+div.topic-item {
+	padding-top: 5px;
+  padding-bottom: 5px;
 }

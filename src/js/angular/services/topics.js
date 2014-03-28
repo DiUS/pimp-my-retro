@@ -1,4 +1,5 @@
 app.service('TopicService', ['$rootScope', '$firebase', function($rootScope, $firebase) {
+
   var topicsRef = $firebase(fb.child('topics'));
 
   this.list = function() {
@@ -12,6 +13,14 @@ app.service('TopicService', ['$rootScope', '$firebase', function($rootScope, $fi
 
   this.remove = function(topic) {
     topicsRef.$child(topic.$id).$remove();
+  };
+
+  this.vote = function(topic, user) {
+    topicsRef.$child(topic.$id).$child('votes').$add(user);
+  };
+
+  this.unvote = function(topic, user) {
+    topicsRef.$child(topic.$id).$child('votes').$child(user.$id).$remove();
   };
 
 }]);
