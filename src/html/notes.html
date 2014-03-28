@@ -11,7 +11,9 @@
 
   <script type="text/javascript" src="../js/angular/main.js"></script>
   <script type="text/javascript" src="../js/angular/controllers/authentication.js"></script>
+  <script type="text/javascript" src="../js/angular/controllers/notes.js"></script>
   <script type="text/javascript" src="../js/angular/services/authentication.js"></script>
+  <script type="text/javascript" src="../js/angular/services/topics.js"></script>
 
   <link type="text/css" rel="stylesheet" media="all" href="../css/bootstrap.min.css">
   <link type="text/css" rel="stylesheet" media="all" href="../css/bootstrap-theme.min.css">
@@ -44,8 +46,22 @@
       </nav>
     </div>
   </div>
-  <div class="panel-body">
-    Content
+  <div class="panel-body" ng-controller="NotesCtrl">
+    <form role="form">
+      <div class="form-group">
+        <input type="textarea" class="form-control" id="text" placeholder="Enter topic..." ng-model="topic.text">
+      </div>
+      <button type="button" class="btn btn-default" ng-click="addTopic()">Add</button>
+    </form>
+
+    <table class="table table-condensed">
+      <thead>
+        <th>topics</th>
+      </thead>
+      <tr ng-repeat="topic in topics | orderByPriority">
+        <td>{{topic.text}}</td>
+      </tr>
+    </table>
   </div>
 </div>
 
