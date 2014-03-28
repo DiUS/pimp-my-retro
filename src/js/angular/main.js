@@ -5,15 +5,15 @@ var fb = new Firebase('https://collaborative-retro.firebaseio.com/');
 app.config(['$routeProvider', function($routeProvider) {
 	$routeProvider
 		.when('/', {
-			templateUrl : '../../html/notes.html',
+			templateUrl : 'notes.html',
 			controller  : 'NotesCtrl'
 		})
 		.when('/notes', {
-			templateUrl : '../../html/notes.html',
+			templateUrl : 'notes.html',
 			controller  : 'NotesCtrl'
 		})
 		.when('/dashboard', {
-			templateUrl : '../../html/dashboard.html',
+			templateUrl : 'dashboard.html',
 			controller  : 'DashboardCtrl'
 		});
 }]);
