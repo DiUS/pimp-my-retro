@@ -12,13 +12,10 @@
                 	<h2>{{ cat.title }}</h2>
                 </div>
 
-                <div ui-on-Drop="drop($event, $data, topic)"
-                     on-drop-success="dropped($event, $index, topic)"
-                     ui-draggable="true"
-                     drag="topic"
+                <div 
                      ng-class="cat.class"
                      class="topic"
-                     ng-repeat="topic in topics | orderByPriority | topicCategory:cat">
+                     ng-repeat="topic in topics | orderBy: countVotes(topic):true | topicCategory:cat">
 
                     {{ topic.text }}
                     <br/>

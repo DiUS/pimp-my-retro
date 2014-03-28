@@ -8,23 +8,28 @@ var controller = app.controller('DashboardCtrl', ['$scope', '$location', 'Catego
     $scope.list2 = {};
 
     $scope.dropped = function($event, $index, topic) {
-        alert("remove " + topic.text);
-    }
+        alert("remove " + topic.topicGroup.title);
+    };
 
     $scope.drop = function($event, $data, targetTopic) {
-        alert("dropping '" + $data.text + "' on to '" + targetTopic.text + "'");
-    }
+        if (targetTopic.topicGroup == undefined) {
+        	targetTopic.topicGroup = {title: targetTopic.text, topics: new Array()};
+        }
+        targetTopic.topicGroup.topics.push(targetTopic);
+        targetTopic.topicGroup.topics.push($data);
+        $data.topicGroup = targetTopic.topicGroup;
+    };
 
     $scope.remove = function(topic) {
         TopicService.remove(topic);
-    }
+    };
 
     $scope.countVotes = function(topic) {
-      if(topic.votes == undefined) {
+      if (topic == undefined || topic.votes == undefined) {
         return 0;
       }
       return Object.keys(topic.votes).length;
-    }
+    };
 
     $('#fire').fire({
         mode:'anim',
@@ -41,6 +46,6 @@ var controller = app.controller('DashboardCtrl', ['$scope', '$location', 'Catego
     $scope.selectTopic = function(topic) {
       ActionService.setSelectedTopic(topic);
       $location.path('action');
-    }
+    };
 
 }]);
