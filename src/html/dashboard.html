@@ -46,19 +46,18 @@
   </div>
 </nav>
 
-<div class="panel panel-default">
+<div class="panel panel-default" ng-controller="DashboardCtrl">
     <div class="panel-heading">
-        Dashboard
+        <h1>{{ title }}</h1>
     </div>
 
-    <div class="panel-body container" ng-controller="DashboardCtrl">
+    <div class="panel-body container">
         <div class="dashboard row">
-            <h1>TITLE : {{ title }}</h1>
 
             <div class="category col-md-4 {{ cat.class }}" ng-repeat="cat in categories">
             	<div class="cat-header">
-                <img src="{{ cat.icon }}" />
-                <h2>{{ cat.title }}</h2>
+                	<img src="{{ cat.icon }}" />
+                	<h2>{{ cat.title }}</h2>
                 </div>
                 <div class="topic" ng-repeat="topic in topics">
                     {{ topic.text }}

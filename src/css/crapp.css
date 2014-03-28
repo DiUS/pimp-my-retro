@@ -7,14 +7,35 @@
 	padding-right: 0px;
 }
 
-.cat-header {
-	width: 100%;
-	background-color: #f5f5f5;
-	border-bottom: 2px solid #999;
+.panel {
+	border: 0 none!important;
+}
+
+.panel-heading {
+	width: 90%;
+	text-align: center;
+	margin: 0 auto;
+	border-radius: 15px;
 }
 
 .category {
 	text-align: center;
+}
+
+.cat-header {
+	width: 90%;
+	margin: 10px 10px;
+	padding: 10px 0;
+	background-color: #f5f5f5;
+	border-bottom: 2px solid #999;
+	border-left: 2px solid #999;
+	display: inline-block;
+	border-radius: 15px;
+}
+
+.cat-header img, .cat-header h2 {
+	display: inline;
+	vertical-align: middle;
 }
 
 .topic {
