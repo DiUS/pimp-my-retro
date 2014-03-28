@@ -13,6 +13,8 @@
     <script type="text/javascript" src="../js/angular/controllers/authentication.js"></script>
     <script type="text/javascript" src="../js/angular/controllers/dashboard.controller.js"></script>
     <script type="text/javascript" src="../js/angular/services/authentication.js"></script>
+    <script type="text/javascript" src="../js/angular/services/categories.js"></script>
+    <script type="text/javascript" src="../js/angular/services/topics.js"></script>
 
     <link type="text/css" rel="stylesheet" media="all" href="../css/bootstrap.min.css">
     <link type="text/css" rel="stylesheet" media="all" href="../css/bootstrap-theme.min.css">
@@ -46,20 +48,17 @@
         </div>
     </div>
 
-    <div class="panel-body" ng-controller="DashboardCtrl">
-        <div class="dashboard">
+    <div class="panel-body container" ng-controller="DashboardCtrl">
+        <div class="dashboard row">
             <h1>TITLE : {{ title }}</h1>
 
-            <div class="col-4">
-                <h2 ng-bind="">Happy</h2>
+            <div class="col-4" ng-repeat="cat in categories">
+                <h2>{{ cat.title }}</h2>
+                <img src="{{ cat.icon }}" />
+                <div ng-repeat="topic in topics">
+                    {{ topic.text }}
+                </div>
             </div>
-            <div class="col-4">
-                <h2 ng-bind="">Sad</h2>
-            </div>
-            <div class="col-4">
-                <h2 ng-bind="">Confused</h2>
-            </div>
-
         </div>
     </div>
 </div>
