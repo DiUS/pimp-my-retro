@@ -1,0 +1,35 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:baselineAligned="false"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="3" >
+
+    <!-- Happy -->
+
+    <FrameLayout
+        android:id="@+id/fragmentHappy"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="@android:color/holo_orange_light" />
+
+    <!-- Unhappy -->
+
+    <FrameLayout
+        android:id="@+id/fragmentUnHappy"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="@android:color/holo_blue_light" />
+
+    <!-- ? -->
+
+    <FrameLayout
+        android:id="@+id/fragmentNoIdea"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="@android:color/holo_purple" />
+
+</LinearLayout>

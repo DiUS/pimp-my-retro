@@ -1,0 +1,9 @@
+<resources>
+
+    <color name="black_overlay">#66000000</color>
+    
+    <color name="app_background_color">#FFEFB0</color>
+     <color name="app_separator_background_color">#FF8040</color>
+	<color name="topic_background_color">#66800080</color>
+    
+</resources>
