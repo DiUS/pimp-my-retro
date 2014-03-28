@@ -1,4 +1,4 @@
-var app = angular.module('app', ['firebase', 'ngRoute']);
+var app = angular.module('app', ['firebase', 'ngRoute', 'ngDragDrop']);
 var fb = new Firebase('https://collaborative-retro.firebaseio.com/');
 
 // configure our routes
