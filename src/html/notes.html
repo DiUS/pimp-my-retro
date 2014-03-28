@@ -38,6 +38,7 @@
         <li><a href="#" ng-click="login()" ng-hide="authenticated">Login</a></li>
         <li><a href="#" ng-show="authenticated">Hello {{user.name}}</a></li>
         <li class="active"><a href="notes.html" ng-show="authenticated">Add retro topic</a></li>
+        <li><a href="dashboard.html" ng-show="authenticated">Dashboard</a></li>
         <li><a href="#" ng-click="logout()" ng-show="authenticated">Logout</a></li>
       </ul>
     </div>
@@ -60,15 +61,6 @@
       </div>
       <button type="button" class="btn btn-default" ng-click="addTopic()">Add</button>
     </form>
-
-    <table class="table table-condensed">
-      <thead>
-        <th>topics</th>
-      </thead>
-      <tr ng-repeat="topic in topics | orderByPriority">
-        <td>{{topic.text}}</td>
-      </tr>
-    </table>
   </div>
 </div>
 
