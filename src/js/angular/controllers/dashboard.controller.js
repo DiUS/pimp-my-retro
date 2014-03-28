@@ -2,4 +2,8 @@ var controller = app.controller('DashboardCtrl', ['$scope', 'CategoryService', '
     $scope.title = 'CRApp';
     $scope.categories = CategoryService.list();
     $scope.topics = TopicService.list();
+
+    $scope.remove = function(topic) {
+        TopicService.remove(topic);
+    }
 }]);

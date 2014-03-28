@@ -1,4 +1,5 @@
 app.service('TopicService', ['$rootScope', '$firebase', function($rootScope, $firebase) {
+
   var topicsRef = $firebase(fb.child('topics'));
 
   this.list = function() {
