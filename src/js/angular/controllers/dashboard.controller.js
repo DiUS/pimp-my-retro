@@ -3,6 +3,9 @@ var controller = app.controller('DashboardCtrl', ['$scope', 'CategoryService', '
     $scope.categories = CategoryService.list();
     $scope.topics = TopicService.list();
 
+    $scope.list1 = {title: 'AngularJS - Drag Me'};
+    $scope.list2 = {};
+
     $scope.remove = function(topic) {
         TopicService.remove(topic);
     }
