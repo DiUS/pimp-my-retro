@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.dius</groupId>
+	<artifactId>pimpMyRetro</artifactId>
+	<name>pimpMyRetro Android application</name>
+	<version>1.0.0</version>
+	<packaging>apk</packaging>
+
+	<!-- Properties -->
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<java.version>1.6</java.version>
+		<android.version>4.1.1.4</android.version>
+		<butterknife.version>4.0.1</butterknife.version>
+		<android.platform>19</android.platform>
+		<otto.version>1.3.4</otto.version>
+		<firebase.version>[1.0.7,)</firebase.version>
+		<android-supportv4>19.0.1</android-supportv4>
+		<maven-android-plugin.version>3.9.0-rc.1</maven-android-plugin.version>
+		<junit.version>4.10</junit.version>
+		<robolectric.version>2.2</robolectric.version>
+	</properties>
+
+	<!-- Extra repository -->
+	<repositories>
+		<repository>
+			<id>android-support</id>
+			<url>file://${env.ANDROID_HOME}/extras/android/m2repository</url>
+		</repository>
+	</repositories>
+
+	<!-- Dependencies -->
+	<dependencies>
+		<dependency>
+			<groupId>com.google.android</groupId>
+			<artifactId>android</artifactId>
+			<version>${android.version}</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>com.android.support</groupId>
+			<artifactId>support-v4</artifactId>
+			<version>${android-supportv4}</version>
+		</dependency>
+
+		<dependency>
+		  <groupId>com.firebase</groupId>
+		  <artifactId>firebase-client</artifactId>
+		  <version>${firebase.version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>com.jakewharton</groupId>
+			<artifactId>butterknife</artifactId>
+			<version>${butterknife.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.squareup</groupId>
+			<artifactId>otto</artifactId>
+			<version>${otto.version}</version>
+		</dependency>
+
+	</dependencies>
+
+	<!-- Build -->
+	<build>
+		<finalName>${project.artifactId}</finalName>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>${java.version}</source>
+					<target>${java.version}</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>com.jayway.maven.plugins.android.generation2</groupId>
+				<artifactId>maven-android-plugin</artifactId>
+				<configuration>
+					<sdk>
+						<path>${env.ANDROID_HOME}</path>
+						<platform>${android.platform}</platform>
+					</sdk>
+					<deleteConflictingFiles>true</deleteConflictingFiles>
+				</configuration>
+				<extensions>true</extensions>
+			</plugin>
+		</plugins>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>com.jayway.maven.plugins.android.generation2</groupId>
+					<artifactId>android-maven-plugin</artifactId>
+					<extensions>true</extensions>
+					<version>${maven-android-plugin.version}</version>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+</project>
