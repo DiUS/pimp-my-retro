@@ -1,0 +1,30 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h1>{{ title }}</h1>
+    </div>
+
+    <div class="span3" data-original-title="">
+        <div class="btn btn-primary" data-drag="true" data-jqyoui-options="{revert: 'invalid'}" ng-model="list1" jqyoui-draggable="{animate:true}" ng-hide="!list1.title">{{list1.title}}</div>
+    </div>
+
+
+    <div class="panel-body container">
+        <div class="dashboard row">
+
+            <div class="category col-md-4 {{ cat.class }}" ng-repeat="cat in categories">
+            	<div class="cat-header">
+                	<img src="{{ cat.icon }}" />
+                	<h2>{{ cat.title }}</h2>
+                </div>
+
+                <div jqyoui-draggable="{animate:true}" data-drag="true" data-jqyoui-options="{revert: 'invalid'}" class="topic" ng-repeat="topic in topics | orderByPriority | topicCategory:cat">
+                    {{ topic.text }}
+                    <br/>
+                    votes:{{countVotes(topic)}}
+                    <button ng-click="remove(topic)" class="btn btn-danger btn-sm">X</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
