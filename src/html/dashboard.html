@@ -13,6 +13,8 @@
                 </div>
                 <div class="topic" ng-repeat="topic in topics | orderByPriority | topicCategory:cat">
                     {{ topic.text }}
+                    <br/>
+                    votes:{{countVotes(topic)}}
                     <button ng-click="remove(topic)" class="btn btn-danger btn-sm">X</button>
                 </div>
             </div>
