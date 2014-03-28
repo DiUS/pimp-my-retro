@@ -18,6 +18,7 @@
 
     <link type="text/css" rel="stylesheet" media="all" href="../css/bootstrap.min.css">
     <link type="text/css" rel="stylesheet" media="all" href="../css/bootstrap-theme.min.css">
+    <link type="text/css" rel="stylesheet" media="all" href="../css/crapp.css">
 </head>
 <body>
 
@@ -52,7 +53,7 @@
         <div class="dashboard row">
             <h1>TITLE : {{ title }}</h1>
 
-            <div class="col-4" ng-repeat="cat in categories">
+            <div class="col-md-4 {{ cat.class }}" ng-repeat="cat in categories">
                 <h2>{{ cat.title }}</h2>
                 <img src="{{ cat.icon }}" />
                 <div ng-repeat="topic in topics">
