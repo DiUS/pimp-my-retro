@@ -12,6 +12,10 @@ app.config(['$routeProvider', function($routeProvider) {
 			templateUrl : 'notes.html',
 			controller  : 'NotesCtrl'
 		})
+		.when('/vote', {
+			templateUrl : '../../html/vote.html',
+			controller  : 'NotesCtrl'
+		})
 		.when('/dashboard', {
 			templateUrl : 'dashboard.html',
 			controller  : 'DashboardCtrl'

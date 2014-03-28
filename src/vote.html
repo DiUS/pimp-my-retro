@@ -1,51 +1,3 @@
-<!DOCTYPE html>
-<html ng-app="app">
-<head>
-  <title>Collaborative Retros</title>
-  <script type="text/javascript" src="js/angular.min.js"></script>
-  <script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
-  <script type="text/javascript" src="js/firebase.js"></script>
-  <script type="text/javascript" src="js/bootstrap.min.js"></script>
-  <script type="text/javascript" src="js/angularfire.min.js"></script>
-  <script type="text/javascript" src="js/firebase-simple-login.js"></script>
-
-  <script type="text/javascript" src="js/angular/main.js"></script>
-  <script type="text/javascript" src="js/angular/controllers/authentication.js"></script>
-  <script type="text/javascript" src="js/angular/controllers/notes.js"></script>
-  <script type="text/javascript" src="js/angular/services/authentication.js"></script>
-  <script type="text/javascript" src="js/angular/services/categories.js"></script>
-  <script type="text/javascript" src="js/angular/services/topics.js"></script>
-
-  <link type="text/css" rel="stylesheet" media="all" href="css/bootstrap.min.css">
-  <link type="text/css" rel="stylesheet" media="all" href="css/bootstrap-theme.min.css">
-  <link type="text/css" rel="stylesheet" media="all" href="css/crapp.css">
-</head>
-<body>
-
-<nav class="navbar navbar-default" role="navigation" ng-controller="AuthenticationCtrl">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="#">CrApp</a>
-    </div>
-
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        <li><a href="#" ng-click="login()" ng-hide="authenticated">Login</a></li>
-        <li><a href="#" ng-show="authenticated">Hello {{user.name}}</a></li>
-        <li class="active"><a href="notes.html" ng-show="authenticated">Add retro topic</a></li>
-        <li><a href="dashboard.html" ng-show="authenticated">Dashboard</a></li>
-        <li><a href="#" ng-click="logout()" ng-show="authenticated">Logout</a></li>
-      </ul>
-    </div>
-  </div>
-</nav>
-
 <div class="panel panel-default">
   <div class="panel-heading">
     <span>Add retro topic</span>
@@ -60,12 +12,10 @@
       <div class="row" ng-repeat="category in categories | orderByPriority" ng-show="category == selectedCategory">
         <div class="col-md-4 topic-item" ng-repeat="topic in topics | orderByPriority | topicCategory:category">
           <span>{{topic.text}}</span>
-          <button type="button" class="btn-sm btn-default glyphicon glyphicon-heart pull-right" ng-click="vote(topic)"></button>
+          <button type="button" class="btn-sm btn-primary glyphicon glyphicon-heart pull-right" ng-click="unvote(topic)" ng-show="hasVote(topic)"></button>
+          <button type="button" class="btn-sm btn-default glyphicon glyphicon-heart pull-right" ng-click="vote(topic)" ng-hide="hasVote(topic)"></button>
         </div>
       </div>
     </div>
   </div>
 </div>
-
-</body>
-</html>
