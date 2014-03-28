@@ -1,7 +1,8 @@
-var controller = app.controller('DashboardCtrl', ['$scope', 'CategoryService', 'TopicService', function($scope, CategoryService, TopicService) {
+var controller = app.controller('DashboardCtrl', ['$scope', '$location', 'CategoryService', 'TopicService', 'ActionService', function($scope, $location, CategoryService, TopicService, ActionService) {
     $scope.title = 'CRApp';
     $scope.categories = CategoryService.list();
     $scope.topics = TopicService.list();
+    $scope.actions = ActionService.list();
 
     $scope.list1 = {title: 'AngularJS - Drag Me'};
     $scope.list2 = {};
@@ -36,4 +37,10 @@ var controller = app.controller('DashboardCtrl', ['$scope', 'CategoryService', '
         maxPowZone: 'sides',
         fadingFlameSpeed: 18
     });
+
+    $scope.selectTopic = function(topic) {
+      ActionService.setSelectedTopic(topic);
+      $location.path('action');
+    }
+
 }]);

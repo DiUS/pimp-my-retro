@@ -19,5 +19,10 @@ app.config(['$routeProvider', function($routeProvider) {
 		.when('/dashboard', {
 			templateUrl : 'dashboard.html',
 			controller  : 'DashboardCtrl'
+		})
+		.when('/action', {
+			templateUrl : 'actions.html',
+			controller  : 'ActionsCtrl'
 		});
+
 }]);

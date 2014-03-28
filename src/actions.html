@@ -1,0 +1,18 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <span>Add an action</span>
+  </div>
+
+  <div class="panel-body" ng-show="authenticated">
+    <form role="form">
+      <div class="form-group">
+        Topic - {{selectedTopic.text}}
+        <input type="textarea" class="form-control" id="text" placeholder="Enter Action..." ng-model="action.text">
+      </div>
+      <button type="button" class="btn btn-default" ng-click="addAction()">Add</button>
+    </form>
+  </div>
+  <div>
+    <div ng-repeat="action in actions"></div>
+  </div>
+</div>

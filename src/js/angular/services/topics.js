@@ -1,4 +1,4 @@
-app.service('TopicService', ['$rootScope', '$firebase', function($rootScope, $firebase) {
+app.service('TopicService', ['$rootScope', '$firebase', 'ActionService', function($rootScope, $firebase, ActionService) {
 
   var topicsRef = $firebase(fb.child('topics'));
 
