@@ -1,11 +1,39 @@
-div.good {
-    background-color: green;
+.dashboard {
+	text-align: center;
 }
 
-div.bad {
-    background-color: red;
+.dashboard .col-md-4 {
+	padding-left: 0px;
+	padding-right: 0px;
 }
 
-div.confused {
-    background-color: yellow;
+.cat-header {
+	width: 100%;
+	background-color: #f5f5f5;
+	border-bottom: 2px solid #999;
+}
+
+.category {
+	text-align: center;
+}
+
+.topic {
+	border: 1px solid #999;
+	border-radius: 5px;
+	background: #f5f5f5;
+	width: 70%;
+	margin: 20px auto;
+	padding: 10px;
+}
+
+.category.good .topic {
+    background-color: #B3E4B9;
+}
+
+.category.bad .topic{
+    background-color: #E4B6B3;
+}
+
+.category.confused .topic{
+    background-color: #E4D0B3;
 }
