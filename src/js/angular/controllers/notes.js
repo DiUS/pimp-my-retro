@@ -2,7 +2,7 @@ app.controller('NotesCtrl', ['$scope', '$rootScope', 'TopicService', 'CategorySe
 	$scope.topic = {};
   $scope.topics = TopicService.list();
   $scope.categories = CategoryService.list();
-  $scope.selectedCategory = {};
+  $scope.selectedCategory = $scope.categories[0];
 
   $scope.selectCategory = function(category) {
     $scope.selectedCategory = category;
@@ -16,4 +16,5 @@ app.controller('NotesCtrl', ['$scope', '$rootScope', 'TopicService', 'CategorySe
   $scope.vote = function(topic) {
     TopicService.vote(topic, $rootScope.user.given_name);
   }
+
 }]);
