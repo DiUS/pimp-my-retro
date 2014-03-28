@@ -18,7 +18,7 @@
                 	<h2>{{ cat.title }}</h2>
                 </div>
 
-                <div jqyoui-draggable="{animate:true}" data-drag="true" data-jqyoui-options="{revert: 'invalid'}" class="topic" ng-repeat="topic in topics | orderByPriority | topicCategory:cat">
+                <div jqyoui-draggable="{animate:true}" data-drag="true" data-jqyoui-options="{revert: 'invalid'}" ng-class="cat.class" class="topic" ng-repeat="topic in topics | orderByPriority | topicCategory:cat">
                     {{ topic.text }}
                     <br/>
                     votes:{{countVotes(topic)}}
