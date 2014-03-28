@@ -57,8 +57,8 @@
     </div>
 
     <div class="container-fluid">
-      <div class="row">
-        <div class="col-md-4 topic-item" ng-repeat="topic in topics | orderByPriority">
+      <div class="row" ng-repeat="category in categories | orderByPriority" ng-show="category == selectedCategory">
+        <div class="col-md-4 topic-item" ng-repeat="topic in topics | orderByPriority | topicCategory:category">
           <span>{{topic.text}}</span>
           <button type="button" class="btn-sm btn-default glyphicon glyphicon-heart pull-right" ng-click="vote(topic)"></button>
         </div>

@@ -2,10 +2,11 @@ app.controller('NotesCtrl', ['$scope', '$rootScope', 'TopicService', 'CategorySe
 	$scope.topic = {};
   $scope.topics = TopicService.list();
   $scope.categories = CategoryService.list();
-  $scope.selectedCategory = false;
+  $scope.selectedCategory = $scope.categories[0];
 
   $scope.selectCategory = function(category) {
     $scope.selectedCategory = category;
+    $scope.categorySelected = true;
   };
 
   $scope.addTopic = function() {
@@ -13,7 +14,8 @@ app.controller('NotesCtrl', ['$scope', '$rootScope', 'TopicService', 'CategorySe
     if ($scope.topic.text) {
     	TopicService.add($scope.topic);
     	$scope.error = false;
-    	$scope.selectedCategory = false;
+    	$scope.selectedCategory = $scope.categories[0];
+    	$scope.categorySelected = false;
     } else {
     	$scope.error = "Add a topic, stupid!";
     }
@@ -22,9 +24,5 @@ app.controller('NotesCtrl', ['$scope', '$rootScope', 'TopicService', 'CategorySe
   
   $scope.vote = function(topic) {
     TopicService.vote(topic, $rootScope.user.given_name);
-  }
-  
-  $scope.showInput = function() {
-	  return selectedCategory;
   };
 }]);
