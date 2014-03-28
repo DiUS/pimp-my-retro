@@ -14,4 +14,8 @@ app.service('TopicService', ['$rootScope', '$firebase', function($rootScope, $fi
     topicsRef.$child(topic.$id).$remove();
   };
 
+  this.vote = function(topic, user) {
+    topicsRef.$child(topic.$id).$child('votes').$add(user);
+  };
+
 }]);

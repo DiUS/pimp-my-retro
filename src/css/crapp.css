@@ -58,3 +58,8 @@
 .category.confused .topic{
     background-color: #E4D0B3;
 }
+
+div.topic-item {
+	padding-top: 5px;
+  padding-bottom: 5px;
+}

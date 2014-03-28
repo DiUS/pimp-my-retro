@@ -12,4 +12,8 @@ app.controller('NotesCtrl', ['$scope', '$rootScope', 'TopicService', 'CategorySe
     $scope.topic['category'] = $scope.selectedCategory;
     TopicService.add($scope.topic);
   }
+  
+  $scope.vote = function(topic) {
+    TopicService.vote(topic, $rootScope.user.given_name);
+  }
 }]);

@@ -52,16 +52,18 @@
   </div>
 
   <div class="panel-body" ng-controller="NotesCtrl" ng-show="authenticated">
-    <form role="form">
-      <div class="btn-group">
-        <button type="button" class="btn btn-default" ng-repeat="category in categories | orderByPriority" ng-click="selectCategory(category)">{{category.title}}</button>
-      </div>
+    <div class="btn-group">
+      <button type="button" class="btn btn-default" ng-repeat="category in categories | orderByPriority" ng-click="selectCategory(category)">{{category.title}}</button>
+    </div>
 
-      <div class="form-group">
-        <input type="textarea" class="form-control" id="text" placeholder="Enter topic..." ng-model="topic.text">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-4 topic-item" ng-repeat="topic in topics | orderByPriority">
+          <span>{{topic.text}}</span>
+          <button type="button" class="btn-sm btn-default glyphicon glyphicon-heart pull-right" ng-click="vote(topic)"></button>
+        </div>
       </div>
-      <button type="button" class="btn btn-default" ng-click="addTopic()">Add</button>
-    </form>
+    </div>
   </div>
 </div>
 
