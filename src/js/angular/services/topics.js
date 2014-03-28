@@ -6,6 +6,7 @@ app.service('TopicService', ['$rootScope', '$firebase', function($rootScope, $fi
   };
 
   this.add = function(topic) {
+    topic['user'] = $rootScope.user.given_name;
     topicsRef.$add(topic);
   };
 
