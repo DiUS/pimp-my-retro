@@ -6,4 +6,11 @@ var controller = app.controller('DashboardCtrl', ['$scope', 'CategoryService', '
     $scope.remove = function(topic) {
         TopicService.remove(topic);
     }
+
+    $scope.countVotes = function(topic) {
+      if(topic.votes == undefined) {
+        return 0;
+      }
+      return Object.keys(topic.votes).length;
+    }
 }]);
