@@ -13,7 +13,7 @@ app.config(['$routeProvider', function($routeProvider) {
 			controller  : 'NotesCtrl'
 		})
 		.when('/vote', {
-			templateUrl : '../../html/vote.html',
+			templateUrl : 'vote.html',
 			controller  : 'NotesCtrl'
 		})
 		.when('/dashboard', {

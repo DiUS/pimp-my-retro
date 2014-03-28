@@ -26,6 +26,10 @@ app.controller('NotesCtrl', ['$scope', '$rootScope', 'TopicService', 'CategorySe
     TopicService.vote(topic, $rootScope.user.given_name);
   };
 
+  $scope.unvote = function(topic) {
+    TopicService.unvote(topic, $rootScope.user.given_name);
+  };
+
   $scope.hasVote = function(topic) {
     var voted = false;
     angular.forEach(topic.votes, function(vote) {

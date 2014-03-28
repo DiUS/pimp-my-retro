@@ -20,7 +20,15 @@ app.service('TopicService', ['$rootScope', '$firebase', function($rootScope, $fi
   };
 
   this.unvote = function(topic, user) {
-    topicsRef.$child(topic.$id).$child('votes').$child(user.$id).$remove();
+    var votesRef = fb.child('topics').child(topic.$id).child('votes');
+    votesRef.on('value', function(snapshot) {
+      snapshot.forEach(function(childSnapshot) {
+        var voter = childSnapshot.val();
+        if(voter == $rootScope.user.given_name) {
+          childSnapshot.ref().remove();
+        }
+      });
+    });
   };
 
 }]);
