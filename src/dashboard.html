@@ -8,24 +8,24 @@
 
             <div class="category col-md-4" ng-repeat="cat in categories">
             	<div class="cat-header">
-                	<img src="{{cat.icon}}" />
-                	<h2>{{ cat.title }}</h2>
-                </div>
+              	<img src="{{cat.icon}}" />
+              	<h2>{{ cat.title }}</h2>
+              </div>
 
-                <div ui-on-Drop="drop($event, $data, topic)"
-                     on-drop-success="dropped($event, $index, topic)"
-                     ui-draggable="true"
-                     drag="topic"
-                     ng-class="cat.class"
-                     class="topic"
-                     ng-repeat="topic in topics | orderByPriority | topicCategory:cat">
-
-                    {{ topic.text }}
-                    <br/>
-                    votes:{{countVotes(topic)}}
-                    <button ng-click="remove(topic)" class="btn btn-danger btn-sm">X</button>
-                    <a class="btn btn-sm" ng-click="selectTopic(topic)">Action</a>
-                </div>
+              <div ui-on-Drop="drop($event, $data, topic)"
+                   on-drop-success="dropped($event, $index, topic)"
+                   ui-draggable="true"
+                   drag="topic"
+                   ng-class="cat.class"
+                   class="topic"
+                   ng-repeat="topic in topics | orderByPriority | topicCategory:cat">
+                   
+                  <button ng-click="remove(topic)" class="btn btn-danger btn-xs glyphicon glyphicon-remove pull-right"></button>
+                  {{ topic.text }}
+                  <br/>
+                  <div class="pull-left">Votes <span class="badge">{{countVotes(topic)}}</span></div>
+                  <div class="clearfix"></div>
+              </div>
             </div>
             <div class="cat-header">
                 <h2>ACTIONS</h2>
