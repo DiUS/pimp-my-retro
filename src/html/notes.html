@@ -13,6 +13,7 @@
   <script type="text/javascript" src="../js/angular/controllers/authentication.js"></script>
   <script type="text/javascript" src="../js/angular/controllers/notes.js"></script>
   <script type="text/javascript" src="../js/angular/services/authentication.js"></script>
+  <script type="text/javascript" src="../js/angular/services/categories.js"></script>
   <script type="text/javascript" src="../js/angular/services/topics.js"></script>
 
   <link type="text/css" rel="stylesheet" media="all" href="../css/bootstrap.min.css">
@@ -20,48 +21,46 @@
 </head>
 <body>
 
-<div class="panel panel-default">
-  <div class="panel-heading">
-    <div ng-controller="AuthenticationCtrl">
-      <button type="submit" ng-click="login()" ng-hide="authenticated">Login using Google</button>
-      <span ng-show="authenticated">Hello {{user.name}}</span>
+<nav class="navbar navbar-default" role="navigation" ng-controller="AuthenticationCtrl">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">CrApp</a>
     </div>
 
-    <div class="container">
-      <div class="navbar-header">
-        <button data-target=".bs-navbar-collapse" data-toggle="collapse" type="button" class="navbar-toggle">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="<%= home_index_path =%>">Home</a>
-      </div>
-      <nav role="navigation" class="collapse navbar-collapse bs-navbar-collapse">
-        <ul class="nav navbar-nav">
-          <li>
-            <a href="<%= home_settings_path =%>">Settings</a>
-          </li>
-        </ul>
-      </nav>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li><a href="#" ng-click="login()" ng-hide="authenticated">Login</a></li>
+        <li><a href="#" ng-show="authenticated">Hello {{user.name}}</a></li>
+        <li class="active"><a href="notes.html" ng-show="authenticated">Add retro topic</a></li>
+        <li><a href="dashboard.html" ng-show="authenticated">Dashboard</a></li>
+        <li><a href="#" ng-click="logout()" ng-show="authenticated">Logout</a></li>
+      </ul>
     </div>
   </div>
-  <div class="panel-body" ng-controller="NotesCtrl">
+</nav>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <span>Add retro topic</span>
+  </div>
+
+  <div class="panel-body" ng-controller="NotesCtrl" ng-show="authenticated">
     <form role="form">
+      <div class="btn-group">
+        <button type="button" class="btn btn-default" ng-repeat="category in categories | orderByPriority" ng-click="selectCategory(category)">{{category.title}}</button>
+      </div>
+
       <div class="form-group">
         <input type="textarea" class="form-control" id="text" placeholder="Enter topic..." ng-model="topic.text">
       </div>
       <button type="button" class="btn btn-default" ng-click="addTopic()">Add</button>
     </form>
-
-    <table class="table table-condensed">
-      <thead>
-        <th>topics</th>
-      </thead>
-      <tr ng-repeat="topic in topics | orderByPriority">
-        <td>{{topic.text}}</td>
-      </tr>
-    </table>
   </div>
 </div>
 
