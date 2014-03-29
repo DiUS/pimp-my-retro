@@ -3,7 +3,6 @@ pimp-my-retro
 
 To start the project, run the command
 ```
-cd src
 python -m SimpleHTTPServer
 ```
 
