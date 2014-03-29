@@ -1,5 +1,5 @@
 var controller = app.controller('DashboardCtrl', ['$scope', '$location', 'CategoryService', 'TopicService', 'ActionService', function($scope, $location, CategoryService, TopicService, ActionService) {
-    $scope.title = 'CRApp';
+    $scope.title = 'Dashboard';
     $scope.categories = CategoryService.list();
     $scope.topics = TopicService.list();
     $scope.actions = ActionService.list();

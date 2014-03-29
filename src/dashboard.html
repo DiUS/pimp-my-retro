@@ -1,6 +1,6 @@
 <div id="dashboard-view" class="panel panel-default">
     <div id="fire" class="panel-heading">
-        <h1>{{ title }}</h1>
+        <h3>{{ title }}</h3>
     </div>
 
     <div class="panel-body container">
@@ -21,10 +21,9 @@
                    ng-repeat="topic in topics | orderByPriority | topicCategory:cat">
                    
                   <button ng-click="remove(topic)" class="btn btn-danger btn-xs glyphicon glyphicon-remove pull-right"></button>
-                  {{ topic.text }}
-                  <br/>
+                  <div class="text">{{ topic.text }}</div>
                   <div class="pull-left">Votes <span class="badge">{{countVotes(topic)}}</span></div>
-                  <a class="btn btn-sm" ng-click="selectTopic(topic)">Action</a>
+                  <a class="btn btn-sm glyphicon glyphicon-plus" ng-click="selectTopic(topic)">Action</a>
                   <div class="clearfix"></div>
               </div>
             </div>
