@@ -4,7 +4,7 @@
   </div>
 
   <div class="panel-body" ng-controller="NotesCtrl" ng-show="authenticated">
-    <div class="btn-group">
+    <div class="btn-group categories">
       <button type="button" ng-class="(category == selectedCategory) ? 'btn-primary' : ''" class="btn" ng-repeat="category in categories | orderByPriority" ng-click="selectCategory(category)">{{category.title}}</button>
     </div>
 
