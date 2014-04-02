@@ -4,6 +4,7 @@ var controller = app.controller('DashboardCtrl', ['$scope', '$location', '$log',
     $scope.topics = TopicService.list();
     $scope.actions = ActionService.list();
 
+
     $scope.list1 = {title: 'AngularJS - Drag Me'};
     $scope.list2 = {};
 
