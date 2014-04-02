@@ -18,7 +18,7 @@
                    drag="topic"
                    ng-class="cat.class"
                    class="topic"
-                   ng-repeat="topic in topics | orderByPriority | topicCategory:cat">
+                   ng-repeat="topic in topics | topicCategory:cat | orderBy:countVotes:true">
                    
                   <button ng-click="remove(topic)" class="btn btn-danger btn-xs glyphicon glyphicon-remove pull-right"></button>
                   <div class="text">{{ topic.text }}</div>
