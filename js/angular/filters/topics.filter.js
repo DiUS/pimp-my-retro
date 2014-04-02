@@ -1,7 +1,7 @@
 app.filter('topicCategory', function() {
     return function(items, category) {
 
-        var filtered = [];
+        var filtered = new Array();
 
         angular.forEach(items, function(topic) {
             if(topic.category) {
