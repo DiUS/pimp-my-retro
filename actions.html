@@ -8,6 +8,7 @@
       <div class="form-group">
         Topic - {{selectedTopic.text}}
         <input type="textarea" class="form-control" id="text" placeholder="Enter Action..." ng-model="action.text">
+        <div ng-show="message != ''" class="alert alert-success">{{message}}</div>
       </div>
       <button type="button" class="btn btn-default" ng-click="addAction()">Add</button>
     </form>

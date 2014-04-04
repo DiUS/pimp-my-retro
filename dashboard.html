@@ -33,7 +33,7 @@
               </div>
               <div class="topic" ng-repeat="action in actions">
                 <button ng-click="removeAction(action)" class="btn btn-danger btn-xs glyphicon glyphicon-remove pull-right"></button>
-                <div class="text">{{action.text}}</div>
+                <div class="text">Topic: {{action.topic.text}}<br>Action: {{action.text}}</div>
               </div>
             </div>        
         </div>
