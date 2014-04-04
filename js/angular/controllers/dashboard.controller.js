@@ -4,7 +4,6 @@ var controller = app.controller('DashboardCtrl', ['$scope', '$location', '$log',
     $scope.topics = TopicService.list();
     $scope.actions = ActionService.list();
 
-
     $scope.list1 = {title: 'AngularJS - Drag Me'};
     $scope.list2 = {};
 
@@ -47,5 +46,9 @@ var controller = app.controller('DashboardCtrl', ['$scope', '$location', '$log',
       ActionService.setSelectedTopic(topic);
       $location.path('action');
     };
+
+    $scope.removeAction = function(action) {
+      ActionService.remove(action);
+    }
 
 }]);
