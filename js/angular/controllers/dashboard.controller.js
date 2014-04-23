@@ -1,4 +1,4 @@
-var controller = app.controller('DashboardCtrl', ['$scope', '$location', 'CategoryService', 'TopicService', 'ActionService', function($scope, $location, CategoryService, TopicService, ActionService) {
+var controller = app.controller('DashboardCtrl', ['$scope', '$location', '$log', 'CategoryService', 'TopicService', 'ActionService', function($scope, $location, $log, CategoryService, TopicService, ActionService) {
     $scope.title = 'Dashboard';
     $scope.categories = CategoryService.list();
     $scope.topics = TopicService.list();
@@ -9,22 +9,26 @@ var controller = app.controller('DashboardCtrl', ['$scope', '$location', 'Catego
 
     $scope.dropped = function($event, $index, topic) {
         alert("remove " + topic.text);
-    }
+        //TODO remove the topic from the UI
+    };
 
+    // $data is the topic that is being dropped,
+    // targetTopic is the topic that is being dropped onto.
     $scope.drop = function($event, $data, targetTopic) {
-        alert("dropping '" + $data.text + "' on to '" + targetTopic.text + "'");
-    }
+    	$log.debug('drop: ' + $data.text);
+    	//TODO add the $data topic to the targetTopic
+    };
 
     $scope.remove = function(topic) {
         TopicService.remove(topic);
-    }
+    };
 
     $scope.countVotes = function(topic) {
-      if(topic.votes == undefined) {
+      if (topic == undefined || topic.votes == undefined) {
         return 0;
       }
       return Object.keys(topic.votes).length;
-    }
+    };
 
     $('#fire').fire({
         mode:'anim',
@@ -41,6 +45,10 @@ var controller = app.controller('DashboardCtrl', ['$scope', '$location', 'Catego
     $scope.selectTopic = function(topic) {
       ActionService.setSelectedTopic(topic);
       $location.path('action');
+    };
+
+    $scope.removeAction = function(action) {
+      ActionService.remove(action);
     }
 
 }]);

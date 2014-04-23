@@ -18,7 +18,7 @@
                    drag="topic"
                    ng-class="cat.class"
                    class="topic"
-                   ng-repeat="topic in topics | orderByPriority | topicCategory:cat">
+                   ng-repeat="topic in topics | topicCategory:cat | orderBy:countVotes:true">
                    
                   <button ng-click="remove(topic)" class="btn btn-danger btn-xs glyphicon glyphicon-remove pull-right"></button>
                   <div class="text">{{ topic.text }}</div>
@@ -27,15 +27,15 @@
                   <div class="clearfix"></div>
               </div>
             </div>
-            <div class="cat-header">
+            <div class="actions">
+              <div class="cat-header">
                 <h2>ACTIONS</h2>
-            </div>
-            <div class="topic" ng-repeat="action in actions">
-                Topic: {{action.topic.text}}
-                <br>
-                <Action: {{action.text}}
-            </div>
-        
+              </div>
+              <div class="topic" ng-repeat="action in actions">
+                <button ng-click="removeAction(action)" class="btn btn-danger btn-xs glyphicon glyphicon-remove pull-right"></button>
+                <div class="text">Topic: {{action.topic.text}}<br>Action: {{action.text}}</div>
+              </div>
+            </div>        
         </div>
     </div>
 </div>
